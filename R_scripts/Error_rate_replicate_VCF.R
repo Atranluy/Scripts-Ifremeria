@@ -47,15 +47,14 @@ for( i in levels(File_repl$Couple)){
     ind2<-which(colnames(geno_ma1)==list_ind[2])
     print(paste0("pair of replicate  ",ind1," and ",ind2))
     
-    
-    k<-geno_ma1[,ind1]==geno_ma1[,ind2]
+    k<-geno_ma1[,ind1]==geno_ma1[,ind2] ################ do the true number of difference between two genotyped replicate, if one has missing data it will return an NA value.
     kl<-table(k,exclude = F )
     tot_nodiff<-sum(kl)
-    nb_diff_withno_NA<-(nombre_de_row-tot_nodiff)
-    taux_err_genotyped<-((nb_diff_withno_NA/(kl[1]+nb_diff_withno_NA))*100)
-    taux_err<-((nb_diff_withno_NA/nombre_de_row)*100)
-    taux_err_with_NA<-(((kl[2]+nb_diff_withno_NA)/nombre_de_row)*100)
-    taux_err_only_NA<-((kl[2]/nombre_de_row)*100)
+    nb_diff_withno_NA<-(nombre_de_row-tot_nodiff) ##############  true number of difference between two genotyped replicate over all SNPs 
+    taux_err_genotyped<-((nb_diff_withno_NA/(kl[1]+nb_diff_withno_NA))*100)  ####### converted into error rate over only genotyped sites in both individual
+    taux_err<-((nb_diff_withno_NA/nombre_de_row)*100) ####### converted into error rate over all SNPs
+    taux_err_with_NA<-(((kl[2]+nb_diff_withno_NA)/nombre_de_row)*100)  ####### converted into error rate considering NA as also error (in one or both individuals) over all SNPs
+    taux_err_only_NA<-((kl[2]/nombre_de_row)*100) ###### converted into error rate considering ONLY NA as error (in one or both individuals) over all SNPs
     all_taux<-rbind(all_taux,taux_err_with_NA)
     all_taux_no_NA<-rbind(all_taux_no_NA,taux_err)
     all_taux_geno<-rbind(all_taux_geno,taux_err_genotyped)
@@ -135,15 +134,18 @@ for( i in levels(File_repl$Couple)){
   
   
   
-  ####### write genotyping error rate only for genotyped SNPs for both replicate over all SNPs (no  missing data)
+############# genotyped error rate over all SNPs (no NA consideration as error)
   write.table(t2,"all_taux_erreur_geno.csv",sep=";", row.names = F, col.names = T,quote=F)
   
-  ####### write genotyping error rate only for genotyped SNPs for both replicate over all SNPs (consideringg)
+############# genotyped error rate over all SNPS considering NA as error
   write.table(t1,"all_taux_erreur.csv",sep=";", row.names = F, col.names = F)
-  
-  write.table(t3,"all_taux_no_NA_erreur.csv",sep=";", row.names = F, col.names = F)
-  
+
+############# genotyped error rate over only genotyped SNPs in both replicate (no consideration of NA value as error)
+  write.table(t3,"all_taux_no_NA_err.csv",sep=";", row.names = F, col.names = F)
+ 
+############# ONLY NA error rate over all SNPS 
   write.table(t4,"all_taux_onlyNAerreur.csv",sep=";", row.names = F, col.names = F)
+
 
 
 
