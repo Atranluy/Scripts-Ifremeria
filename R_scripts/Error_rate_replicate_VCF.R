@@ -5,11 +5,11 @@ argv <- commandArgs(TRUE)
 
 VCF<-argv[1]  # argument one is the vcf
 rep_file <- argv[2] # argument two is the file (tab delimited) that contain replicate with their number of couple 
-
+########## rep_file need to have header "Nom_replicas	 Couple"
 library(SNPRelate)
 library(gdsfmt)
 
-########### Rscript which calculate genotyping error from VCF with 4 differents consideration of missing data.
+########### Rscript which calculate genotyping error from VCF with 4 differents consideration of missing data (see end).
 
 File_repl<-read.table(rep_file, sep="\t", header=T)
 File_repl$Couple<-as.factor(File_repl$Couple)
