@@ -1,7 +1,7 @@
-###  SCRIPT from Adrien Tran Lu You
+###  SCRIPT from Adrien Tran Lu Y
 ### 2021
 ### Dadi version 2.1 with local research using dual annealing from  https://gitlab.mbb.univ-montp2.fr/khalid/dadi/-/tree/master~
-
+###
 
 GPU_e=False  ### set true is using GPU instead of CPU 
 
@@ -11,6 +11,7 @@ import os
 dir=os.getcwd()
 os.chdir(dir)
 
+##### size of the grid
 pts_1=20
 pts_2=25
 pts_3=30
@@ -18,8 +19,8 @@ pts_3=30
 
 
 modeldemo=sys.argv[1] # argv is the name of the model called ie 'IM , IM2NG... etc... " 
-Fs_file=sys.argv[2] # FS_file 
-iteration= sys.argv[3] # integer that give the interation of the run.
+Fs_file=sys.argv[2] #  name of the FS_file
+iteration= sys.argv[3] # integer that give the interation of the run. (i.e 1 , 2...)
 
 if modeldemo=="SI":
 	#params= nu1,nu2,Ts
@@ -42,82 +43,82 @@ elif modeldemo=="SI2NG":
 	lower_bound = [0.00001,0.00001,0.00001,0.00001, 0.01, 0.00001, 0.01]
 	p0=[1,1,1,1,0.5,1,0.2]
 elif modeldemo=="SC":
-	#params= nu1,nu2,Ts,Tam|Tsc,m12,m21
+	#params= nu1,nu2,Ts,Tsc,m12,m21
 	upper_bound = [100,100,10,10,10,10]
 	lower_bound = [0.00001,0.00001, 0.00001, 0.00001, 0.00001, 0.00001]
 	p0 = [2,2,1,1,1,1]
 elif modeldemo=="SCG":
-	#params= nu1,nu2,b1,b2,Ts,Tam|Tsc,m12,m21
+	#params= nu1,nu2,b1,b2,Ts,Tsc,m12,m21
 	upper_bound = [100,100,100,100,10,10,10,10]
 	lower_bound = [0.00001,0.00001,0.1,0.1,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,1,1,1,1]
 elif modeldemo=="SC2N":
-	#params= nu1, nu2, hrf, Ts, Tam|Tsc ,m12, m21, Q
+	#params= nu1, nu2, hrf,Tam,Ts ,m12, m21, Q
 	upper_bound = [100,100,1,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,0.5,1,1,1,1,0.2]
 elif modeldemo=="SC2NG":
-	#params= nu1, nu2,b1,b2, hrf, Ts, Tam|Tsc ,m12, m21, Q
+	#params= nu1, nu2,b1,b2, hrf,Tam,Ts ,m12, m21, Q
 	upper_bound = [100,100,100,100,1,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.1,0.1,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,0.5,1,1,1,1,0.2]
 elif modeldemo=="SC2m":
-	#params=nu1, nu2,Ts,Tsc, m12, m21, me12, me21, P
+	#params=nu1,nu2,Ts,Tsc, m12, m21, me12, me21, P
 	upper_bound = [100,100,100,100,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,2,2,1,1,1,1,0.2]
 elif modeldemo=="SC2mG":
-	#params=nu1, nu2, b1, b2, Ts, Tsc, m12, m21, me12, me21, P
+	#params=nu1, nu2, b1, b2,Tam,Ts, m12, m21, me12, me21, P
 	upper_bound = [100,100,100,100,100,100,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,2,2,1,1,1,1,0.2]
 elif modeldemo=="SC2N2m":
-	#params= nu1, nu2, hrf, Ts, Tsc, m12, m21, me12, me21, P, Q
+	#params= nu1, nu2, hrf,Tam,Ts, m12, m21, me12, me21, P, Q
 	upper_bound = [100,100,1,100,100,10,10,10,10,0.99,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,0.2,2,2,1,1,1,1,0.2,0.2]
 elif modeldemo=="SC2N2mG":
-	#params= nu1, nu2, b1, b2, hrf, Ts, Tsc,m12, m21, me12, me21, P,Q
+	#params= nu1, nu2, b1, b2, hrf,Tam,Ts,m12, m21, me12, me21, P,Q
 	upper_bound = [100,100,100,100,1,100,100,10,10,10,10,0.99,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,0.2,1,1,1,1,1,1,0.2,0.2]
 elif modeldemo=="AM":
-	#params= nu1,nu2,Ts,Tam|Tsc,m12,m21
+	#params= nu1,nu2,Tam,Ts,m12,m21
 	upper_bound = [100,100,10,10,10,10]
 	lower_bound = [0.00001,0.00001, 0.00001, 0.00001, 0.00001, 0.00001]
 	p0 = [2,2,1,1,1,1]
 elif modeldemo=="AMG":
-	#params= nu1,nu2,b1,b2,Ts,Tam|Tsc,m12,m21
+	#params= nu1,nu2,b1,b2,Tam,Ts,m12,m21
 	upper_bound = [100,100,100,100,10,10,10,10]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,1,1,1,1]
 elif modeldemo=="AM2N":
-	#params= nu1, nu2, hrf, Ts, Tam|Tsc ,m12, m21, Q
+	#params= nu1, nu2, hrf,Tam,Ts ,m12, m21, Q
 	upper_bound = [100,100,1,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,0.5,1,1,1,1,0.2]
 elif modeldemo=="AM2NG":
-	#params= nu1, nu2,b1,b2, hrf, Ts, Tam|Tsc ,m12, m21, Q
+	#params= nu1, nu2,b1,b2, hrf,Tam,Ts ,m12, m21, Q
 	upper_bound = [100,100,100,100,1,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,0.5,1,1,1,1,0.2]
 elif modeldemo=="AM2m":
-	#params=nu1, nu2,Ts,Tsc, m12, m21, me12, me21, P
+	#params=nu1, nu2,Tam,Ts, m12, m21, me12, me21, P
 	upper_bound = [100,100,100,100,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,2,2,1,1,1,1,0.2]
 elif modeldemo=="AM2mG":
-	#params=nu1, nu2, b1, b2, Ts, Tsc, m12, m21, me12, me21, P
+	#params=nu1, nu2, b1, b2,Tam,Ts, m12, m21, me12, me21, P
 	upper_bound = [100,100,100,100,100,100,10,10,10,10,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,2,2,1,1,1,1,0.2]
 elif modeldemo=="AM2N2m":
-	#params= nu1, nu2, hrf, Ts, Tsc, m12, m21, me12, me21, P,Q
+	#params= nu1, nu2, hrf,Tam,Ts, m12, m21, me12, me21, P,Q
 	upper_bound = [100,100,1,100,100,10,10,10,10,0.99,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,0.2,2,2,1,1,1,1,0.2,0.2]
 elif modeldemo=="AM2N2mG":
-	#params= nu1, nu2, b1, b2, hrf, Ts, Tsc,m12, m21, me12, me21, P,Q
+	#params= nu1, nu2, b1, b2, hrf,Tam,Ts,m12, m21, me12, me21, P,Q
 	upper_bound = [100,100,100,100,1,100,100,10,10,10,10,0.99, 0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,0.2,2,2,1,1,1,1,0.2, 0.2]
@@ -157,17 +158,17 @@ elif modeldemo=="IM2N2m":
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,0.2,2,2,1,1,1,0.2, 0.2]
 elif modeldemo=="IM2N2mG":
-	#params= nu1, nu2, b1, b2, hrf, m12, m21, me12, me21, Ts, Tsc, P, Q
+	#params= nu1, nu2, b1, b2, hrf, m12, m21, me12, me21,Tam,Ts, P, Q
 	upper_bound = [100,100,100,100,1,10,10,10,10,10,0.99,0.99]
 	lower_bound = [0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001]
 	p0 = [2,2,1,1,0.2,2,1,1,1,1,0.2,0.2]
 
 else:
-	print ("model unknown or not well writen")
+	print ("error, check code")
+
 print(upper_bound)
 print(lower_bound)
 print(p0)
-
 print(" ")
 from numpy import array
 import timeit
@@ -262,7 +263,8 @@ pylab.figure(figsize=(8,6))
 dadi.Plotting.plot_2d_comp_multinom(model, data, vmin=1, resid_range=3,
                                     pop_ids =('Leg1','Leg2'), show=False)
 # Save the figure
-pylab.savefig(modeldemo+"_"+iteration+"_.png", dpi=300)
-
+pylab.savefig(modeldemo+"_"+iteration+"_.png", dpi=600)
+pylab.savefig(modeldemo+"_"+iteration+"_.svg", dpi=600)
+pylab.savefig(modeldemo+"_"+iteration+"_.pdf", dpi=600)
 
 
