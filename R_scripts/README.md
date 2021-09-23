@@ -32,7 +32,7 @@ name_ind3|3
 name_ind3_rep1|3
 name_ind3_rep2|3
 
-## **Rscript to remove replicate with higher rate of missing data **
+## **Rscript to remove replicate with higher rate of missing data**
 the Rscrip **Remove_replicate_missdata.R** will calculate the percent of missing data for all replicate from a VCF file and return the list of replicate with the highest value.
 This script run simply on a HPC by using :
 > Rscript Remove_replicate_missdata.R {my.vcf} {file_replicate.txt}
