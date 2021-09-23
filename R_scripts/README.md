@@ -1,7 +1,7 @@
 # **Readme for RScripts**
 
 
-## **Calculating genotype error rate**
+##  **Calculating genotype error rate**
 the Rscript **Error_rate_replicate_VCF.R** will calculate the genotyped error rate between replicate from a VCF file.
 
 It will use the package R SNPrelate.
