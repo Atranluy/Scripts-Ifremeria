@@ -6,13 +6,13 @@ library(gdsfmt)
 
 
 argv <- commandArgs(TRUE)
-x <- argv[1] ### argument two is the file (tab delimited) that contain replicate with their number of couple 
+x <- argv[2] ### argument two is the file (tab delimited) that contain replicate with their number of couple 
 ###### with header "Nom_replicates Couple"
 ###### ind1 1 
 ###### ind1_r1 1
 ###### ind2 2
 ###### ind2_r2 2
-vcf_file<- argv[2] ##### VCF 
+vcf_file<- argv[1] ##### VCF 
 rep_table<-read.table(x,header = T)
 rep_table$Couple<-as.factor(rep_table$pairs)
 
