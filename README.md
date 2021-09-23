@@ -1,4 +1,4 @@
-# **SCRIPTS **
+# SCRIPTS
 
 
 Repositories for scripts used in Ifremeria nautilei genome-wide study.
