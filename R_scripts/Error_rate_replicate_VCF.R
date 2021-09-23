@@ -134,17 +134,14 @@ for( i in levels(File_repl$Couple)){
   
   
   
-############# genotyped error rate over all SNPs (no NA consideration as error)
-  write.table(t2,"all_taux_erreur_geno.csv",sep=";", row.names = F, col.names = T,quote=F)
-  
-############# genotyped error rate over all SNPS considering NA as error
-  write.table(t1,"all_taux_erreur.csv",sep=";", row.names = F, col.names = F)
-
-############# genotyped error rate over only genotyped SNPs in both replicate (no consideration of NA value as error)
-  write.table(t3,"all_taux_no_NA_err.csv",sep=";", row.names = F, col.names = F)
- 
-############# ONLY NA error rate over all SNPS 
-  write.table(t4,"all_taux_onlyNAerreur.csv",sep=";", row.names = F, col.names = F)
+############# genotyped error rate over all SNPs (missing data is not considered as an error)
+  write.table(t2,"Table_geno_error.csv",sep=";", row.names = F, col.names = T,quote=F)
+############# genotyped error rate over all SNPs (missing data is considered as an error)
+  write.table(t1,"Table_geno_error_with_NA.csv",sep=";", row.names = F, col.names = F)
+############# genotyped error rate over only tagged SNPs for all individual (missing data is not taken in account)
+  write.table(t3,"Table_geno_error_with_noNA.csv",sep=";", row.names = F, col.names = F)
+############# ONLY missing data as error rate over all SNPS 
+  write.table(t4,"Table_geno_error_only_NA.csv",sep=";", row.names = F, col.names = F)
 
 
 
