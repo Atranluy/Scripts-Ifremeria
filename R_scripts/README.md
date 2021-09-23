@@ -15,4 +15,18 @@ This will simply calculate the number of non-concordant genotype between replica
 4. **Table_geno_error_only_NA.csv** is a table of the percent of genotyped error while considering missing data as the only error. 
 _____
 
-To run this script on a HPC, you just have to write "Rscript Error_rate_replicate_VCF.R {
+To run this script on a HPC, you just have to write "Rscript Error_rate_replicate_VCF.R {my.vcf} {file_replicate.txt}
+
+* {my.vcf} just correspond to the name of the vcf (e.g my vcf is called  *populations.snps.vcf*, you will just write *populations.snps.vcf*)
+* {file_replicate.txt} is just a text file with 2 tab-delimited column.
+*  The first one correspond of the same sample id as used in the VCF file and the second correspond to a integer of pair of replicate. an exemple below
+## Exemple
+Replicates|Pairs
+----------|----------
+name_ind1|1
+name_ind1_rep|1
+name_ind2|2
+name_ind2_rep|2
+name_ind3|3
+name_ind3_rep1|3
+name_ind3_rep2|3
