@@ -14,7 +14,7 @@ library(gdsfmt)
 File_repl<-read.table(rep_file, sep="\t", header=T)
 File_repl$Couple<-as.factor(File_repl$Couple)
 
-filenames <- Sys.glob("*snps.vcf")
+filenames <- VCF
 nom_file<-NULL
 t1<-NULL
 t2<-NULL
