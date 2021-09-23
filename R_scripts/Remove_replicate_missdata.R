@@ -14,7 +14,7 @@ x <- argv[1] ### argument two is the file (tab delimited) that contain replicate
 ###### ind2_r2 2
 vcf_file<- argv[2] ##### VCF 
 rep_table<-read.table(x,header = T)
-rep_table$Couple<-as.factor(rep_table$Couple)
+rep_table$Couple<-as.factor(rep_table$pairs)
 
 ####### create GDS file from the VCF with snprelate
 snpgdsVCF2GDS(vcf_file,paste0(vcf_file,'.gds'), method="biallelic.only")
@@ -27,11 +27,11 @@ miss_data<-as.data.frame(miss_data)
 miss_data$ind<-row.names(miss_data)
 
 id_to_del=NULL
-for( i in levels(rep_table$Couple)){
-  aa<-which(i==rep_table$Couple)
+for( i in levels(rep_table$pairs)){
+  aa<-which(i==rep_table$pairs)
   #print(length(rep_table$Nom_replicates[aa]))
-  long<-length(rep_table$Nom_replicates[aa])
-  list_ind<-rep_table$Nom_replicates[aa]
+  long<-length(rep_table$replicates[aa])
+  list_ind<-rep_table$replicates[aa]
 if(long==2){
   list_temp<-NULL
   ind1<-which(miss_data$ind==list_ind[1])
@@ -53,7 +53,7 @@ if(long==2){
     id_to_del_temp<-list_ind[-id_min]
     id_to_del<-append(id_to_del,id_to_del_temp)}}
 	
-######### output a txt_file with ind name of all replicate with the higher value of missing data. 
+######### output a txt_file with sample name of all replicate with the higher value of missing data. 
 write.table(id_to_del,"replicate_with_higher_err_rate.txt",row.names = F, col.names = F, quote = F)
 
  
