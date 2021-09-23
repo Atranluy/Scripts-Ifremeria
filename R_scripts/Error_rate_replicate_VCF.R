@@ -12,7 +12,7 @@ library(gdsfmt)
 ########### Rscript which calculate genotyping error from VCF with 4 differents consideration of missing data (see end).
 
 File_repl<-read.table(rep_file, sep="\t", header=T)
-File_repl$Couple<-as.factor(File_repl$Couple)
+File_repl$pairs<-as.factor(File_repl$pairs)
 
 filenames <- VCF
 nom_file<-NULL
@@ -36,11 +36,11 @@ all_taux_no_NA<-NULL
 all_taux_onlyNA<-NULL
 list_nom_rep<-c() 
   
-for( i in levels(File_repl$Couple)){
-  aa<-which(i==File_repl$Couple)
-  print(length(File_repl$Nom_replicas[aa]))
-  long<-length(File_repl$Nom_replicas[aa])
-  list_ind<-File_repl$Nom_replicas[aa]
+for( i in levels(File_repl$pairs)){
+  aa<-which(i==File_repl$pairs)
+  print(length(File_repl$replicates[aa]))
+  long<-length(File_repl$replicates[aa])
+  list_ind<-File_repl$replicates[aa]
   if(long==2){
     #########
     ind1<-which(colnames(geno_ma1)==list_ind[1])
