@@ -1,4 +1,4 @@
-# **Readme for RScripts**
+# ***Readme for RScripts***
 
 
 ##  **Calculating genotype error rate**
@@ -16,10 +16,11 @@ This will simply calculate the number of non-concordant genotype between replica
 _____
 
 To run this script on a HPC, you just have to write :
-> Rscript Error_rate_replicate_VCF.R {my.vcf} {file_replicate.txt}
-
-* {my.vcf} just correspond to the name of the vcf (e.g my vcf is called  *populations.snps.vcf*, you will just write *populations.snps.vcf*)
-* {file_replicate.txt} is just a text file with 2 tab-delimited column.
+```
+Rscript Error_rate_replicate_VCF.R my.vcf file_replicate.txt
+```
+* my.vcf just correspond to the name of the vcf (e.g my vcf is called  *populations.snps.vcf*, you will just write *populations.snps.vcf*)
+* file_replicate.txt is just a text file with 2 tab-delimited column.
 *  The first one correspond of the same sample id as used in the VCF file and the second correspond to a integer of pair of replicate. an exemple below
 ### Exemple
 Replicates|Pairs
@@ -35,8 +36,9 @@ name_ind3_rep2|3
 ## **Rscript to remove replicate with higher rate of missing data**
 the Rscrip **Remove_replicate_missdata.R** will calculate the percent of missing data for all replicate from a VCF file and return the list of replicate with the highest value.
 This script run simply on a HPC by using :
-> Rscript Remove_replicate_missdata.R {my.vcf} {file_replicate.txt}
-
+```
+Rscript Remove_replicate_missdata.R my.vcf file_replicate.txt
+ ```
 This script will need the same input as described in the previous script.
 
 
