@@ -46,7 +46,7 @@ You can also run the command directly from the terminal where you will give 3 ar
 
 1. model used for exemple.  > **IM2m**
 2. spectrum file
-3.the iteration (must be an integer)
+3. the iteration (must be an integer)
 
 For exemple i ran a simulation for the model **IM2m** for the 9th iteration on the *noNA_change* models
 ```
