@@ -14,7 +14,7 @@ You will find 2 version of the same models display in the figure below.
 1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence.
 2. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence.
 
-. This change is to simulate instaneous population bottleneck or expansion before the split.
+This change is to simulate instaneous population bottleneck or expansion before the split.
 
 
 !!! depending on which type of model you want use, change the name of the script *call_all_model_NA_change.py* to *call_all_model_no_NA_change.py* in the bash script or in the command in the terminal !!!
