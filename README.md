@@ -9,3 +9,5 @@ R folder contain the scripts used
 Dadi folder contain the scripts and models used for simulation in Ifremeria nautilei.
 
 Each subfodler have it own readme that explain what do each scripts and how to run it 
+
+ok
