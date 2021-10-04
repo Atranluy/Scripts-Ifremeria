@@ -11,8 +11,8 @@ If direct installation is used juste comment each line "source activate dadi_sim
 
 ## Model type
 You will find 2 version of the same models display in the figure below.
-1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence.
-2. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence.
+1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence. **Exemple figure A)** 
+2. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence. **Exemple figure B)**
 
 This change is to simulate instaneous population bottleneck or expansion before the split.
 
