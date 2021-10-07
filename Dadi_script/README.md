@@ -10,6 +10,9 @@ Direct installation of *dadi* in a linux environnement doesn't need to load a sp
 If direct installation is used juste comment each line "source activate dadi_sim" with an #
 
 ## Model type
+These scripts contained 28 divergence models of 2 populations.  All these models have been rewritten with very slight changes and come from [Rougueux et al.,2017](https://doi.org/10.1093/gbe/evx150).                                                                                                                                 
+**Don't forget to cite them when used these models**
+
 You will find 2 version of the same models display in the figure below.
 1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence. **Exemple figure A)** 
 2. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence. **Exemple figure B)**
