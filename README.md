@@ -1,7 +1,7 @@
 # ***SCRIPTS***
 
 
-Repositories for scripts used in Ifremeria nautilei genome-wide study.
+Repositories for scripts used in Ifremeria nautilei genome-wide study (ddRAD-seq) from Tran Lu Y et al.
 
 You will find R, Python and Bash scripts.
 
