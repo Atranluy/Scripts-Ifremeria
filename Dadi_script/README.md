@@ -7,7 +7,13 @@ This version used an *dual annealing* function to find the optimized likelihood
 
 **!!! Caution !!!** : I'm also using an python environnement to install and run *dadi* within it, conda environnement should also work.
 Direct installation of *dadi* in a linux environnement doesn't need to load a special environnement such as i do.
-If direct installation is used juste comment each line "source activate dadi_sim" with an #
+If a direct installation is used juste comment each line "source activate dadi_sim" with an #
+## VCF to dadi format file.
+To generate a spectrum file from a vcf, i used a personnal script adapted from the exemple taken from [official site from dadi](https://dadi.readthedocs.io/en/latest/user-guide/importing-data/). 
+to generate a 50 size spectrum,i used the VCF, a popmpa file (tab delimited file with indvidual and population), the output name and the size (here 50)
+
+
+
 
 ## Model type
 These scripts contained 28 divergence models of 2 populations.  All these models have been rewritten with very slight changes and come from [Rougueux et al.,2017](https://doi.org/10.1093/gbe/evx150).                                                                                                                                 
