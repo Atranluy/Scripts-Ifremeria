@@ -5,9 +5,9 @@ Here you will find my scripts for *dadi* simulation
 The modified version of dadi used can be download from there [Gitlab_Khalid_Dadi](https://gitlab.mbb.univ-montp2.fr/khalid/dadi/-/tree/master).                           
 This version used an *dual annealing* function to find the optimized likelihood.
 
-**!!! Caution !!!** : I'm also using an python environnement to install and run *dadi* within it, conda environnement should also work.
+**!!! Caution !!!** : I'm also using an python environnement (**conda**) to install and run *dadi* within it, conda environnement should also work.
 Direct installation of *dadi* in a linux environnement doesn't need to load a special environnement such as i do.
-If a direct installation is used juste comment each line "source activate dadi_sim".
+If a direct installation is used, just comment each line "source activate dadi_sim".
 ## VCF to dadi format file
 To generate a spectrum file from a vcf, i used a personnal script adapted from the exemple taken from [official site from dadi](https://dadi.readthedocs.io/en/latest/user-guide/importing-data/). 
 To run this script, you have to give several arguments in the order given in the command below. 
