@@ -25,8 +25,10 @@ These scripts contained 28 divergence models of 2 populations.  All these models
 We have added the IM2N2M and IM2N2mG models and we have considerer population growth (G) only during the migration phase in (IM/AM/SC) models.
 
 You will find 2 version of the same models display in the figure below.
-1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence. **Exemple figure A)** 
-2. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence. **Exemple figure B)**
+1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence. 
+2. **Exemple figure A)** 
+3. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence. 
+4. **Exemple figure B)**
 
 This change is to simulate instaneous population bottleneck or expansion before the split, as done in  [Momigliano et al., 2021](https://doi.org/10.1093/molbev/msab047).
 
