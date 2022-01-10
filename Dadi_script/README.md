@@ -21,7 +21,7 @@ Dont hesitate to open the script to see what it does, in my case, i always exclu
 
 ## Model type
 These scripts contained 28 divergence models of 2 populations.  All these models have been rewritten with very slight changes and come from [Rougueux et al.,2017](https://doi.org/10.1093/gbe/evx150).                                                                                                                                 
-**Don't forget to cite them when used these models, aswell as dadi papers.**
+**Don't forget to cite them when used these models, aswell as ***dadi*** papers.**
 We have added the IM2N2M and IM2N2mG models and we have considerer population growth (G) only during the migration phase in (IM/AM/SC) models.
 
 You will find 2 version of the same models display in the figure below.
