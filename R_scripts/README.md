@@ -39,5 +39,16 @@ Rscript Remove_replicate_missdata.R my.vcf file_replicate.txt
  ```
 This script will need the same input as described in the previous script.
 
+## ** Utility Script for VCF analysis and format conversion**
+The Rscript named *Utility_script_SNPRelate.R* is a R script containing R function to be used as *"package"*.
+Currently, the functions contained in this script use the SNPRelate genofile format and a dataframe containing the individuals and associated populations (like a stacks's popmap file).  
+Before using these functions, make sure you have **SNPRelate** and **inbreedR** R package installed. 
+In this current version, several functions can be used:
+- Calculate the multilocus heterozygosity (MLH)
+- The spectrum of allele frequencies folded from the minor allele frequency (MAF)
+- Generate Baypass and Treemix files from a Genofile and a popmap file.
+- Calculate the heterozygosity at each SNP (but the script is not finished) 
+
+
 
 
