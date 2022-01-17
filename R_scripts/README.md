@@ -49,6 +49,12 @@ In this current version, several functions can be used:
 - Generate Baypass and Treemix files from a Genofile and a popmap file.
 - Calculate the heterozygosity at each SNP (but the script is not finished) 
 
+to load the script function within the console write at the beginning of the script:
+```
+source("Utility_script_SNPRelate.R")
+```
+Dont forget to add path if the script is not in the currend directory !
+
 
 
 
