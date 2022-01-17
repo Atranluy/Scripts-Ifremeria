@@ -13,6 +13,8 @@ Each subfodler have it own **readme** that explain what do each scripts and how 
 
 Dont hesitate to ask question about it.
 
+*NB: some change and update can be done since all scripts are not completly finished.*
+
 
 
 *Adrien Tran Lu Y*
