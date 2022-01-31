@@ -47,7 +47,7 @@ for( i in levels(File_repl$pairs)){
     ind2<-which(colnames(geno_ma1)==list_ind[2])
     print(paste0("pair of replicate  ",ind1," and ",ind2))
     
-    k<-geno_ma1[,ind1]==geno_ma1[,ind2] ################ do the true number of difference between two genotyped replicate, if one has missing data it will return an NA value.
+    k<-geno_ma1[,ind1]==geno_ma1[,ind2] ################ do the number of difference between two genotyped replicate, if one has missing data, it will return an NA value.
     kl<-table(k,exclude = F )
     tot_nodiff<-sum(kl)
     nb_diff_withno_NA<-(nombre_de_row-tot_nodiff) ##############  true number of difference between two genotyped replicate over all SNPs 
