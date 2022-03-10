@@ -140,7 +140,6 @@ def IM2NG(params, ns, pts):
     # Define the grid we'll use
     xx = dadi.Numerics.default_grid(pts)
    
-s
     # phi for the equilibrium ancestral population
     phi = dadi.PhiManip.phi_1D(xx)
 
