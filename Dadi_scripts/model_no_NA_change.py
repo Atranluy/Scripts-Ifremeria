@@ -496,7 +496,7 @@ def SI2N(params, ns, pts):
     """
     xx = dadi.Numerics.default_grid(pts)
 
-    phinr = dadi.PhiManip.phi_1D(xx)
+    phi = dadi.PhiManip.phi_1D(xx)
     # Now do the divergence event
     phi = dadi.PhiManip.phi_1D_to_2D(xx, phi)
     
