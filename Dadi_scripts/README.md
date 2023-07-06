@@ -1,56 +1,55 @@
-#  ***Dadi***
-Here you will find my scripts for *dadi* simulation
+# Dadi
 
-## Where to download the version used
-The modified version of dadi used can be download from there [Gitlab_Khalid_Dadi](https://gitlab.mbb.univ-montp2.fr/khalid/dadi/-/tree/master).                           
-This version used an *dual annealing* function to find the optimized likelihood.
+Welcome to the repository for my *dadi* simulation scripts!
 
-**!!! Caution !!!** : I'm also using an python environnement (**conda**) to install and run *dadi* within it, conda environnement should also work.
-Direct installation of *dadi* in a linux environnement doesn't need to load a special environnement such as i do.
-If a direct installation is used, just comment each line "source activate dadi_sim".
-## VCF to dadi format file
-To generate a spectrum file from a vcf, i used a personnal script adapted from the exemple taken from [official site from dadi](https://dadi.readthedocs.io/en/latest/user-guide/importing-data/). 
-To run this script, you have to give several arguments in the order given in the command below. 
+## Downloading the Used Version
+You can download the modified version of *dadi* that I used from the following GitLab repository: [Gitlab_Khalid_Dadi](https://gitlab.mbb.univ-montp2.fr/khalid/dadi/-/tree/master). This version incorporates a *dual annealing* function to find the optimized likelihood.
+
+**Caution**: I'm utilizing a Python environment under **conda** to install and run *dadi* within it. However, *dadi* can also be installed directly in a Linux environment without requiring a specific environment like the one I use. If you choose to do a direct installation, simply comment out the line "source activate dadi_sim" in the scripts.
+
+## Converting VCF to dadi Format
+To generate a spectrum file from a VCF (Variant Call Format) file, I have adapted a personal script based on the example provided in the [official dadi documentation](https://dadi.readthedocs.io/en/latest/user-guide/importing-data/). To run this script, you need to provide several arguments in the specified order as shown in the command below:
 
 ``` 
 python3 fs_from_VCF_arg.py myVCF my_popmap_file 50 outputname pop1 pop2 
 ``` 
-this will generate two files, a spectrum file and a figure associated with this spectrum.
 
-Dont hesitate to open the script to see what it does, in my case, i always exclude singleton. 
+This script will generate two files: a spectrum file and an associated figure depicting the spectrum. Feel free to open the script to understand its functionality. 
+In my case, I included two line to exclude singletons from the generated spectrum.
 
-## Model type
-These scripts contained 28 divergence models of 2 populations.  All these models have been rewritten with very slight changes and come from [Rougueux et al.,2017](https://doi.org/10.1093/gbe/evx150).                                                                                                                                 
-**Don't forget to cite them when used these models, aswell as ***dadi*** papers.**  
-We have added the IM2N2M and IM2N2mG models and we have considerer population growth (G) only during the migration phase in (IM/AM/SC) models.
+## Model Types
+These scripts include 28 divergence models for two populations. All these models have been rewritten with slight modifications and originate from [Rougueux et al., 2017](https://doi.org/10.1093/gbe/evx150). When using these models, make sure to cite both their work and the *dadi* papers.
 
-You will find 2 version of the same models display in the figure below.
-1. Call *model_no_NA* which contained all the models with no change on the ancestral population prior the split/divergence. 
-2. **Exemple figure A)** 
-3. Call *model_NA_Change* which contained all the models with a change on the ancestral population prior the split/divergence. 
-4. **Exemple figure B)**
+In addition to the existing models from the previous paper, i have added the IM2N2M and IM2N2mG models. For the (IM/AM/SC) models, population growth (G) is considered only during the migration phase.
 
-This change is to simulate instaneous population bottleneck or expansion before the split, as done in  [Momigliano et al., 2021](https://doi.org/10.1093/molbev/msab047).
+Two versions of the models are provided, as shown in the figures below:
+1. *model_no_NA* contains all the models without any changes to the ancestral population prior to the split/divergence.
+   - Example Figure A
+2. *model_NA_Change* contains all the models with a change in the ancestral population prior to the split/divergence.
+   - Example Figure B
 
+The change in the ancestral population is included to simulate instantaneous population bottlenecks or expansions before the split, as described in [Momigliano et al., 2021](https://doi.org/10.1093/molbev/msab047).
 
-!!! depending on which type of model you want use, change the name of the script *call_all_model_NA_change.py* to *call_all_model_no_NA_change.py* in the bash script or in the command in the terminal !!!
+Depending on the type of model you wish to use, modify the name of the script *call_all_model_NA_change.py* to *call_all_model_no_NA_change.py* in either the bash script or the terminal command.
 
-## Model exemple
+## Example Model
 ![Dessin_model_Nachange_noNa](https://user-images.githubusercontent.com/84977797/135247836-5f909cd9-d56e-430e-a3c8-7adb79249ef7.png)
 
-## How to run simulation with these scripts
-There is two main way to run these scripts.
+## Running Simulations with the Scripts
+There are two main ways to run these scripts.
 
-### Using the bash scritp to launch multiple job
+### Using the Bash Script for Multiple Jobs 
+(Works on HPC)
+Place all the scripts in a single folder and use the bash script **Multi_Launch_dadi.sh**. In this script, specify the name of the spectrum file generated by *dadi* as follows:
 
-You will need to put all the scripts in one folder and then use only the bash script  **Multi_Launch_dadi.sh**.  
-In this following script, you have to write the name of your Spectrum file generated by *dadi*
 ``` 
-FS=my_sprectrum_file_nam
+FS=my_spectrum_file_name
 ``` 
 
-then in these lines, you will need to write each model name you want to run and the number of independent runs you will perform.
-In the following exemple, i ran two models **SC2N2m** and **AM2N2m** for 11 idependent runs.  
+Next, in the following lines,
+
+you need to specify the models you want to run and the number of independent runs for each model. In the example provided, I ran two models, **SC2N2m** and **AM2N2m**, for 11 independent runs:
+
 ``` 
 for model in SC2N2m AM2N2m;
 do
@@ -58,26 +57,99 @@ for i in `seq 1 11`;
 do
 ``` 
 
-### Direct run 
-You can also run the command directly from the terminal where you have to give 3 arguments to perform the simulation:
+### Direct Execution 
+(Closing the terminal will stop the computation)
+You can also run the command directly from the terminal by providing three arguments for the simulation:
 
-1. model used for exemple.  > **IM2m**
-2. spectrum file
-3. the iteration (must be an integer)
+1. The model you want to use, for example, **IM2m**.
+2. The spectrum file.
+3. The iteration number (must be an integer).
 
-For exemple, i ran a simulation for the model **IM2m** for the 9th run on the *noNA_change* models
+For example, to run a simulation for the model **IM2m** in the 9th run on the *noNA_change* models, execute the following command:
+
 ```
 python3 call_all_model_noNA_change.py IM2m my_spectrum_file_name 9 
 ```
 
-### Writing additionnal model within these scripts
+### Adding Additional Models
+If you want to add more models to these scripts, whether for the *NA_change* or *no_Na_Change* versions, you can open the respective scripts (*model_NA_change.py* or *model_No_NA_change.py*) and add your model as a function at the end. Additionally, in the **Call_all_model** Python script, add your model and parameter bounds to the corresponding **elif** condition, following the structure of the existing models.
 
-If you're new to this, see the *dadi* [tutorial page](https://dadi.readthedocs.io/en/latest/), model writing is well explained.
+# Dadi
 
-To add model in these scripts, whenever on which type of models you want to write (*with NA_change or no_Na_Change* scripts).  
-You have to open the respectively named scripts (*model_NA_change.py or model_No_NA_change.py*) and add you model as a functions at the end of theses scripts.  
-Then, you will have to add your model and parameters bound at the end of the  ***elif*** condition as other models in the **Call_all_model** python script.
+Welcome to the repository for my *dadi* simulation scripts!
+
+## Downloading the Used Version
+You can download the modified version of *dadi* that I used from the following GitLab repository: [Gitlab_Khalid_Dadi](https://gitlab.mbb.univ-montp2.fr/khalid/dadi/-/tree/master). This version incorporates a *dual annealing* function to find the optimized likelihood.
+
+**Caution**: I'm utilizing a Python environment under **conda** to install and run *dadi* within it. However, *dadi* can also be installed directly in a Linux environment without requiring a specific environment like the one I use. If you choose to do a direct installation, simply comment out the line "source activate dadi_sim" in the scripts.
+
+## Converting VCF to dadi Format
+To generate a spectrum file from a VCF (Variant Call Format) file, I have adapted a personal script based on the example provided in the [official dadi documentation](https://dadi.readthedocs.io/en/latest/user-guide/importing-data/). To run this script, you need to provide several arguments in the specified order as shown in the command below:
+
+``` 
+python3 fs_from_VCF_arg.py myVCF my_popmap_file 50 outputname pop1 pop2 
+``` 
+
+This script will generate two files: a spectrum file and an associated figure depicting the spectrum. Feel free to open the script to understand its functionality. 
+In my case, I included two line to exclude singletons from the generated spectrum.
+
+## Model Types
+These scripts include 28 divergence models for two populations. All these models have been rewritten with slight modifications and originate from [Rougueux et al., 2017](https://doi.org/10.1093/gbe/evx150). When using these models, make sure to cite both their work and the *dadi* papers.
+
+In addition to the existing models from the previous paper, i have added the IM2N2M and IM2N2mG models. For the (IM/AM/SC) models, population growth (G) is considered only during the migration phase.
+
+Two versions of the models are provided, as shown in the figures below:
+1. *model_no_NA* contains all the models without any changes to the ancestral population prior to the split/divergence.
+   - Example Figure A
+2. *model_NA_Change* contains all the models with a change in the ancestral population prior to the split/divergence.
+   - Example Figure B
+
+The change in the ancestral population is included to simulate instantaneous population bottlenecks or expansions before the split, as described in [Momigliano et al., 2021](https://doi.org/10.1093/molbev/msab047).
+
+Depending on the type of model you wish to use, modify the name of the script *call_all_model_NA_change.py* to *call_all_model_no_NA_change.py* in either the bash script or the terminal command.
+
+## Example Model
+![Dessin_model_Nachange_noNa](https://github.com/Atranluy/Scripts-Ifremeria/assets/84977797/8233b4ef-3bd8-455a-9784-2ab75149e7cc)
+
+## Running Simulations with the Scripts
+There are two main ways to run these scripts.
+
+### Using the Bash Script for Multiple Jobs 
+(Works on HPC)
+
+Place all the scripts in a single folder and use the bash script **Multi_Launch_dadi.sh**. In this script, specify the name of the spectrum file generated by *dadi* as follows:
+
+``` 
+FS=my_spectrum_file_name
+``` 
+
+Next, in the following lines,
+
+you need to specify the models you want to run and the number of independent runs for each model. In the example provided, I ran two models, **SC2N2m** and **AM2N2m**, for 11 independent runs:
+
+``` 
+for model in SC2N2m AM2N2m;
+do
+for i in `seq 1 11`;
+do
+``` 
 
 
+### Direct Execution 
+(Closing the terminal will stop the computation)
 
+You can also run the command directly from the terminal by providing three arguments for the simulation:
+
+1. The model you want to use, for example, **IM2m**.
+2. The spectrum file.
+3. The iteration number (must be an integer).
+
+For example, to run a simulation for the model **IM2m** in the 9th run on the *noNA_change* models, execute the following command:
+
+```
+python3 call_all_model_noNA_change.py IM2m my_spectrum_file_name 9 
+```
+
+### Adding Additional Models
+If you want to add more models to these scripts, whether for the *NA_change* or *no_Na_Change* versions, you can open the respective scripts (*model_NA_change.py* or *model_No_NA_change.py*) and add your model as a function at the end. Additionally, in the **Call_all_model** Python script, add your model and parameter bounds to the corresponding **elif** condition, following the structure of the existing models.
 
