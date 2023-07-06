@@ -33,7 +33,7 @@ The change in the ancestral population is included to simulate instantaneous pop
 Depending on the type of model you wish to use, modify the name of the script *call_all_model_NA_change.py* to *call_all_model_no_NA_change.py* in either the bash script or the terminal command.
 
 ## Example Model
-![Dessin_model_Nachange_noNa2](https://github.com/Atranluy/Scripts-Ifremeria/assets/84977797/af80e0b9-d059-4812-a95f-5a749ce7aa7c)
+![Dessin_model_Nachange_noNa3](https://github.com/Atranluy/Scripts-Ifremeria/assets/84977797/e57a2d46-66ed-46ef-8b44-3b0158b8b6bc)
 
 ## Running Simulations with the Scripts
 There are two main ways to run these scripts.
